@@ -5,6 +5,7 @@ import com.dnsouzadev.canesfacil.domain.repository.EstabelecimentoRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,20 +23,12 @@ public class EstabelecimentoService {
         return estabelecimentoRepository.findAll();
     }
 
+    @Transactional
     public Estabelecimento salvar(Estabelecimento estabelecimento) {
         return estabelecimentoRepository.save(estabelecimento);
     }
 
-    public Estabelecimento atualizar(UUID estabelecimentoId, Estabelecimento estabelecimento) {
-        Estabelecimento estabelecimentoAtual = buscarOuFalhar(estabelecimentoId);
-
-        estabelecimento.setId(estabelecimentoAtual.getId());
-
-        modelMapper.map(estabelecimento, estabelecimentoAtual);
-
-        return estabelecimentoRepository.save(estabelecimento);
-    }
-
+    @Transactional
     public void excluir(UUID estabelecimentoId) {
         estabelecimentoRepository.deleteById(estabelecimentoId);
     }
