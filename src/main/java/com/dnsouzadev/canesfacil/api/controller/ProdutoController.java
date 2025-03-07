@@ -31,12 +31,12 @@ public class ProdutoController {
     }
 
     @GetMapping("/{produtoId}")
-    @ResponseStatus(HttpStatus.CREATED)
     public ProdutoModel buscarPorId(@PathVariable UUID produtoId) {
         return produtoModelAssembler.toModel(produtoService.buscarOuFalhar(produtoId));
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ProdutoModel adicionar(@RequestBody ProdutoInputModel produtoInput) {
         return produtoModelAssembler.toModel(produtoService.salvar(produtoInputModelDisassembler.toDomainObject(produtoInput)));
     }

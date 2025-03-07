@@ -46,6 +46,17 @@ public class Estabelecimento {
     @UpdateTimestamp
     private LocalDateTime atualizadoEm;
 
+    public void adicionarProduto(Produto produto) {
+        produto.setEstabelecimento(this); // Define a relação bidirecional
+        this.cardapio.add(produto);
+    }
+
+    public void removerProduto(Produto produto) {
+        produto.setEstabelecimento(null); // Remove a relação
+        this.cardapio.remove(produto);
+    }
+
+
 
     @Override
     public final boolean equals(Object o) {
