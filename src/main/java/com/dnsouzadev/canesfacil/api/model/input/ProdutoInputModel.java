@@ -14,6 +14,6 @@ public class ProdutoInputModel {
     private String descricao;
     private String imagem;
     private BigDecimal preco;
-    private UUID estabelecimentoId;
+    private Long estabelecimentoId;
 
 }

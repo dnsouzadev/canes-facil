@@ -26,17 +26,17 @@ public class EstabelecimentoService {
     }
 
     @Transactional
-    public void excluir(UUID estabelecimentoId) {
+    public void excluir(Long estabelecimentoId) {
         estabelecimentoRepository.deleteById(estabelecimentoId);
     }
 
 
-    public Estabelecimento buscarOuFalhar(UUID estabelecimentoId) {
+    public Estabelecimento buscarOuFalhar(Long estabelecimentoId) {
         return estabelecimentoRepository.findById(estabelecimentoId)
                 .orElseThrow(() -> new RuntimeException("Estabelecimento não encontrado"));
     }
 
-    public List<Produto> listarProdutos(UUID estabelecimentoId) {
+    public List<Produto> listarProdutos(Long estabelecimentoId) {
         return estabelecimentoRepository.findByEstabelecimentoId(estabelecimentoId);
     }
 }

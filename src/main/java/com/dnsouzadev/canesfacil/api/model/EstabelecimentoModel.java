@@ -1,5 +1,6 @@
 package com.dnsouzadev.canesfacil.api.model;
 
+import com.dnsouzadev.canesfacil.domain.model.Categorias;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,9 +11,10 @@ import java.util.UUID;
 @Setter
 public class EstabelecimentoModel {
 
-    private UUID id;
+    private Long id;
     private String nome;
     private String descricao;
+    private Categorias categoria;
     private EnderecoModel endereco;
     private BigDecimal precoFrete;
     private String whatsapp;

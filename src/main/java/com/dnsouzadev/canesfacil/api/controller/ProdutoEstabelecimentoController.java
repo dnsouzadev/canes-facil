@@ -27,15 +27,15 @@ public class ProdutoEstabelecimentoController {
     private ProdutoRepository produtoRepository;
 
     @GetMapping
-    public List<Produto> listar(@PathVariable UUID estabelecimentoId) {
+    public List<Produto> listar(@PathVariable Long estabelecimentoId) {
         return estabelecimentoService.listarProdutos(estabelecimentoId);
     }
 
     // Adicionar um produto a um estabelecimento
     @PutMapping("{produtoId}")
     public ResponseEntity<String> associarProduto(
-            @PathVariable UUID estabelecimentoId,
-            @PathVariable UUID produtoId
+            @PathVariable Long estabelecimentoId,
+            @PathVariable Long produtoId
     ) {
         Optional<Estabelecimento> estabelecimentoOpt = estabelecimentoRepository.findById(estabelecimentoId);
         Optional<Produto> produtoOpt = produtoRepository.findById(produtoId);
@@ -56,8 +56,8 @@ public class ProdutoEstabelecimentoController {
     // Remover um produto de um estabelecimento
     @DeleteMapping("/{produtoId}")
     public ResponseEntity<String> desassociarProduto(
-            @PathVariable UUID estabelecimentoId,
-            @PathVariable UUID produtoId
+            @PathVariable Long estabelecimentoId,
+            @PathVariable Long produtoId
     ) {
         Optional<Estabelecimento> estabelecimentoOpt = estabelecimentoRepository.findById(estabelecimentoId);
         Optional<Produto> produtoOpt = produtoRepository.findById(produtoId);

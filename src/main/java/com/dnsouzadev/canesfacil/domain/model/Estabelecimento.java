@@ -19,8 +19,8 @@ import java.util.UUID;
 public class Estabelecimento {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String nome;
 
@@ -37,7 +37,7 @@ public class Estabelecimento {
 
     private Boolean delivery = Boolean.TRUE;
 
-    @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "estabelecimento", cascade = CascadeType.ALL)
     private List<Produto> cardapio;
 
     @CreationTimestamp

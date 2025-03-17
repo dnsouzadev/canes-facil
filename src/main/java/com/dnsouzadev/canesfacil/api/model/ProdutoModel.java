@@ -10,7 +10,7 @@ import java.util.UUID;
 @Setter
 public class ProdutoModel {
 
-    private UUID id;
+    private Long id;
     private String nome;
     private String descricao;
     private String imagem;

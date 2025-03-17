@@ -32,7 +32,7 @@ public class EstabelecimentoController {
     }
 
     @GetMapping("/{estabelecimentoId}")
-    public EstabelecimentoModel buscar(@PathVariable UUID estabelecimentoId) {
+    public EstabelecimentoModel buscar(@PathVariable Long estabelecimentoId) {
         return estabelecimentoModelAssembler.toModel(estabelecimentoService.buscarOuFalhar(estabelecimentoId));
     }
 
@@ -44,7 +44,7 @@ public class EstabelecimentoController {
     }
 
     @PutMapping("/{estabelecimentoId}")
-    public EstabelecimentoModel atualizar(@PathVariable UUID estabelecimentoId, @RequestBody EstabelecimentoInputModel input) {
+    public EstabelecimentoModel atualizar(@PathVariable Long estabelecimentoId, @RequestBody EstabelecimentoInputModel input) {
         Estabelecimento estabelecimentoAtual = estabelecimentoService.buscarOuFalhar(estabelecimentoId);
         estabelecimentoInputModelDisassembler.copyToDomainObject(input, estabelecimentoAtual);
         return estabelecimentoModelAssembler.toModel(estabelecimentoService.salvar(estabelecimentoAtual));
@@ -52,7 +52,7 @@ public class EstabelecimentoController {
 
     @DeleteMapping("/{estabelecimentoId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void remover(@PathVariable UUID estabelecimentoId) {
+    public void remover(@PathVariable Long estabelecimentoId) {
         estabelecimentoService.excluir(estabelecimentoId);
     }
 

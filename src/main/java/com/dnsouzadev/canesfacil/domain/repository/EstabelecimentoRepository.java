@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface EstabelecimentoRepository extends JpaRepository<Estabelecimento, UUID> {
+public interface EstabelecimentoRepository extends JpaRepository<Estabelecimento, Long> {
 
     @Query("from Produto p where p.estabelecimento.id = :estabelecimentoId")
-    List<Produto> findByEstabelecimentoId(UUID estabelecimentoId);
+    List<Produto> findByEstabelecimentoId(Long estabelecimentoId);
 }
